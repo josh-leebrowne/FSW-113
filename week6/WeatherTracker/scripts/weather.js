@@ -17,10 +17,6 @@
 
 
 //GeoCode Lat-Long --> Weather API
-// var cityStateCountry = "Dallas,TX,US"
-// var stateName = "TX"
-// var countryName = "US"
-
 async function initGeoCode(cityName, stateName, countryName){
     let geoCode, weatherData, lat, lon
 
@@ -45,21 +41,16 @@ async function apiRequest(url) {
     })
 }
 
-initGeoCode(); //cityName
+initGeoCode(); 
 
 //Get Value of Input Box
 function sendData(){
-    //let cityStateCountry = document.getElementById("city").value
-
-    //initGeoCode(cityStateCountry)
-
     let textInputStr = document.getElementById("city").value
     let textInputValue = textInputStr.split(",")
     let cityName = textInputValue[0]
     let stateName = textInputValue[1]
     let countryName = textInputValue[2]
     initGeoCode(cityName, stateName, countryName)
-
 }
 
 const goBttn = document.getElementById('goBttn')
@@ -68,12 +59,9 @@ goBttn.addEventListener('click', sendData)
 //Append To HTML
 
 function displayData(weatherData){
-    console.log(weatherData)
     let temp = weatherData.main.temp
     let humidity = weatherData.main.humidity
     let descr = weatherData.weather[0].description
-    
-    // let wrapper = document.getElementById('weatherWrapper')
 
     const displayTemp = document.getElementById("tempData")
     displayTemp.textContent = temp
@@ -83,8 +71,6 @@ function displayData(weatherData){
 
     const displayDescr = document.getElementById("conditionsData")
     displayDescr.textContent = descr
-
-    document.wrapper.appendChild(displayTemp,displayHumidity,displayDescr)
 }
 
 
